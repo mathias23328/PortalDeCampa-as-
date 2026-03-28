@@ -4,27 +4,40 @@
     ViewData["Title"] = "Detalle de Campaña";
 }
 
-<h2>@Model.Nombre</h2>
+<h2 class="mb-4">Detalle de Campaña</h2>
 
-<div class="card">
+<div class="card shadow-sm">
     <div class="card-body">
-        <p><strong>Categoría:</strong> @Model.Categoria</p>
-        <p><strong>Estado:</strong> @Model.Estado</p>
 
-        <p>
-            <strong>Fechas:</strong>
-            @Model.FechaInicio.ToShortDateString() -
-            @Model.FechaFin.ToShortDateString()
-        </p>
+        <h4>@Model.Nombre</h4>
 
-        <p><strong>Canal:</strong> @Model.Canal</p>
-        <p><strong>Descuento:</strong> @Model.DescuentoPct %</p>
+        <dl class="row">
+            <dt class="col-sm-3">Categoría</dt>
+            <dd class="col-sm-9">@Model.Categoria</dd>
 
-        <p><strong>Descripción:</strong></p>
-        <p>@Model.Descripcion</p>
+            <dt class="col-sm-3">Estado</dt>
+            <dd class="col-sm-9">@Model.Estado</dd>
 
-        Index
-            Volver al listado
+            <dt class="col-sm-3">Fechas</dt>
+            <dd class="col-sm-9">
+                @Model.FechaInicio.ToShortDateString() -
+                @Model.FechaFin.ToShortDateString()
+            </dd>
+
+            <dt class="col-sm-3">Canal</dt>
+            <dd class="col-sm-9">@Model.Canal</dd>
+
+            <dt class="col-sm-3">Descuento</dt>
+            <dd class="col-sm-9">@Model.DescuentoPct %</dd>
+
+            <dt class="col-sm-3">Descripción</dt>
+            <dd class="col-sm-9">@Model.Descripcion</dd>
+        </dl>
+
+        <hr />
+
+        <a asp-action="Index" class="btn btn-secondary">
+            ← Volver
         </a>
     </div>
 </div>
