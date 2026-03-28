@@ -1,6 +1,43 @@
 @model IEnumerable<PortalCampanas.Models.Campania>
 
+@{
+    ViewData["Title"] = "Listado de Campañas";
+}
+
 <h2>Listado de Campañas</h2>
+
+<form method="get" class="row g-3 mb-3">
+    <div class="col-md-3">
+        <label class="form-label">Categoría</label>
+        <select name="categoria" class="form-select">
+            <option value="">Todas</option>
+            <option value="Electro" selected="@(ViewBag.CategoriaSeleccionada == "Electro")">Electro</option>
+            <option value="Hogar" selected="@(ViewBag.CategoriaSeleccionada == "Hogar")">Hogar</option>
+            <option value="Moda" selected="@(ViewBag.CategoriaSeleccionada == "Moda")">Moda</option>
+            <option value="Tecnología" selected="@(ViewBag.CategoriaSeleccionada == "Tecnología")">Tecnología</option>
+        </select>
+    </div>
+
+    <div class="col-md-3">
+        <label class="form-label">Estado</label>
+        <select name="estado" class="form-select">
+            <option value="">Todos</option>
+            <option value="Vigente" selected="@(ViewBag.EstadoSeleccionado == "Vigente")">Vigente</option>
+            <option value="Próxima" selected="@(ViewBag.EstadoSeleccionado == "Próxima")">Próxima</option>
+            <option value="Finalizada" selected="@(ViewBag.EstadoSeleccionado == "Finalizada")">Finalizada</option>
+        </select>
+    </div>
+
+    <div class="col-md-6 align-self-end">
+        <button type="submit" class="btn btn-primary">
+            Filtrar
+        </button>
+
+        <a asp-action="Index" class="btn btn-secondary">
+            Limpiar
+        </a>
+    </div>
+</form>
 
 <table class="table table-bordered">
     <thead>
@@ -14,25 +51,29 @@
             <th></th>
         </tr>
     </thead>
+
     <tbody>
-        @foreach (var c in Model)
-        {
-            <tr>
-                <td>@c.Nombre</td>
-                <td>@c.Categoria</td>
-                <td>@c.Estado</td>
-                <td>@c.Canal</td>
-                <td>@c.DescuentoPct %</td>
-                <td>
-                    @c.FechaInicio.ToShortDateString() -
-                    @c.FechaFin.ToShortDateString()
-                </td>
-                <td>
-               
-                    <a asp-controller="Campanas" asp-action="Detalle" asp-route-id="@c.Id">Ver detalle
-                    </a>
-                </td>
-            </tr>
-        }
+@foreach (var c in Model)
+{
+        <tr>
+            <td>@c.Nombre</td>
+            <td>@c.Categoria</td>
+            <td>@c.Estado</td>
+            <td>@c.Canal</td>
+            <td>@c.DescuentoPct %</td>
+            <td>
+                @c.FechaInicio.ToShortDateString() -
+                @c.FechaFin.ToShortDateString()
+            </td>
+            <td>
+                <a asp-controller="Campanas"
+                   asp-action="Detalle"
+                   asp-route-id="@c.Id"
+                   class="btn btn-primary btn-sm">
+                   Ver detalle
+                </a>
+            </td>
+        </tr>
+}
     </tbody>
 </table>
