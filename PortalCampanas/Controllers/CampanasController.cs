@@ -44,5 +44,34 @@ namespace PortalCampanas.Controllers
 
             return View(campania);
         }
+        public IActionResult Resumen()
+{
+    var campanias = CampaniaData.ObtenerCampanias();
+
+    var total = campanias.Count();
+
+    var vigentes = campanias.Count(c => c.Estado == "Vigente");
+    var proximas = campanias.Count(c => c.Estado == "Próxima");
+
+    var promedioDescuento = campanias.Average(c => c.DescuentoPct);
+
+    var porCanal = campanias
+        .GroupBy(c => c.Canal)
+        .Select(g => new
+        {
+            Canal = g.Key,
+            Cantidad = g.Count()
+        })
+        .ToList();
+
+    ViewBag.Total = total;
+    ViewBag.Vigentes = vigentes;
+    ViewBag.Proximas = proximas;
+    ViewBag.Promedio = promedioDescuento;
+    ViewBag.PorCanal = porCanal;
+
+    return View();
+}
     }
+    
 }

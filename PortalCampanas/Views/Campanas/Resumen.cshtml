@@ -1,0 +1,59 @@
+@{
+    ViewData["Title"] = "Resumen de Campañas";
+}
+
+<h2>Resumen de Campañas</h2>
+
+<div class="row mb-4">
+    <div class="col-md-3">
+        <div class="card p-3">
+            <h5>Total</h5>
+            <p>@ViewBag.Total</p>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="card p-3">
+            <h5>Vigentes</h5>
+            <p>@ViewBag.Vigentes</p>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="card p-3">
+            <h5>Próximas</h5>
+            <p>@ViewBag.Proximas</p>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="card p-3">
+            <h5>Promedio Descuento</h5>
+            <p>@ViewBag.Promedio %</p>
+        </div>
+    </div>
+</div>
+
+<h4>Campañas por Canal</h4>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Canal</th>
+            <th>Cantidad</th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in ViewBag.PorCanal)
+{
+        <tr>
+            <td>@item.Canal</td>
+            <td>@item.Cantidad</td>
+        </tr>
+}
+    </tbody>
+</table>
+
+<a asp-action="Index" class="btn btn-secondary">
+    ← Volver
+</a>
