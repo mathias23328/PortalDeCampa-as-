@@ -15,19 +15,24 @@
         </tr>
     </thead>
     <tbody>
-    @foreach (var c in Model)
-    {
-        <tr>
-            <td>@c.Nombre</td>
-            <td>@c.Categoria</td>
-            <td>@c.Estado</td>
-            <td>@c.Canal</td>
-            <td>@c.DescuentoPct %</td>
-            <td>@c.FechaInicio.ToShortDateString() - @c.FechaFin.ToShortDateString()</td>
-            <td>
-                <a class="btn btn-primary btn-sm">Ver detalle</a>
-            </td>
-        </tr>
-    }
+        @foreach (var c in Model)
+        {
+            <tr>
+                <td>@c.Nombre</td>
+                <td>@c.Categoria</td>
+                <td>@c.Estado</td>
+                <td>@c.Canal</td>
+                <td>@c.DescuentoPct %</td>
+                <td>
+                    @c.FechaInicio.ToShortDateString() -
+                    @c.FechaFin.ToShortDateString()
+                </td>
+                <td>
+               
+                    <a asp-controller="Campanas" asp-action="Detalle" asp-route-id="@c.Id">Ver detalle
+                    </a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>
