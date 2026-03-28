@@ -1,0 +1,30 @@
+@model PortalCampanas.Models.Campania
+
+@{
+    ViewData["Title"] = "Detalle de Campaña";
+}
+
+<h2>@Model.Nombre</h2>
+
+<div class="card">
+    <div class="card-body">
+        <p><strong>Categoría:</strong> @Model.Categoria</p>
+        <p><strong>Estado:</strong> @Model.Estado</p>
+
+        <p>
+            <strong>Fechas:</strong>
+            @Model.FechaInicio.ToShortDateString() -
+            @Model.FechaFin.ToShortDateString()
+        </p>
+
+        <p><strong>Canal:</strong> @Model.Canal</p>
+        <p><strong>Descuento:</strong> @Model.DescuentoPct %</p>
+
+        <p><strong>Descripción:</strong></p>
+        <p>@Model.Descripcion</p>
+
+        Index
+            Volver al listado
+        </a>
+    </div>
+</div>
