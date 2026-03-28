@@ -1,0 +1,33 @@
+@model IEnumerable<PortalCampanas.Models.Campania>
+
+<h2>Listado de Campañas</h2>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Categoría</th>
+            <th>Estado</th>
+            <th>Canal</th>
+            <th>Descuento</th>
+            <th>Fechas</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+    @foreach (var c in Model)
+    {
+        <tr>
+            <td>@c.Nombre</td>
+            <td>@c.Categoria</td>
+            <td>@c.Estado</td>
+            <td>@c.Canal</td>
+            <td>@c.DescuentoPct %</td>
+            <td>@c.FechaInicio.ToShortDateString() - @c.FechaFin.ToShortDateString()</td>
+            <td>
+                <a class="btn btn-primary btn-sm">Ver detalle</a>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>
